@@ -42,14 +42,14 @@ public:
 	}
 	bool set_num1(double num1)
 	{
-		do
+		cin >> num1;
+		if (num1 != 0)
 		{
 			this->num1 = num1;
-			if (num1 == 0)
-			{
-				cout << "Неверный ввод!" << endl;
-			}
-		} while (num1 != 0);
+			return num1;
+		}
+			
+		cout << "Неверное число. Повторите." << endl;
 	}
 	bool set_num2(double num2)
 	{
@@ -69,12 +69,14 @@ int main()
 	double num1 = 0.0;
 	double num2 = 0.0;
 
-	/*cout << "Введите num1: ";
-	cin >> num1;
+	cout << "Введите num1: ";
+	/*cin >> num1;
 	cout << endl << "Введите num2: ";
 	cin >> num2;*/
 
-	cin >> calculator.set_num1;
+	calculator.set_num1(num1);
+
+	cout << num1 << endl;
 
 	return 0;
 }
