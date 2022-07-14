@@ -42,24 +42,39 @@ public:
 	}
 	bool set_num1(double num1)
 	{
-		cin >> num1;
-		if (num1 != 0)
+		if (num1 == 0.0)
 		{
-			this->num1 = num1;
-			return num1;
+			return false;
 		}
-			
-		cout << "Неверное число. Повторите." << endl;
+		num1 = this->num1;
+		return true;
 	}
 	bool set_num2(double num2)
 	{
-
+		if (num2 == 0.0)
+		{
+			return false;
+		}
+		num2 = this->num2;
+		return true;
+	}
+	void Screen_output(double num1, double num2)
+	{
+		Calculator screen;
+		cout << "num1 + num2 = " << screen.add(num1, num2) << endl;
+		cout << "num1 - num2 = " << screen.subtract_1_2(num1, num2) << endl;
+		cout << "num2 - num1 = " << screen.subtract_2_1(num2, num1) << endl;
+		cout << "num1 * num2 = " << screen.multiply(num1, num2) << endl;
+		cout << "num1 / num2 = " << screen.divide_1_2(num1, num2) << endl;
+		cout << "num2 / num1 = " << screen.divide_2_1(num2, num1) << endl;
 	}
 
 private:
 	double num1 = 0.0;
 	double num2 = 0.0;
 };
+
+
 
 int main()
 {
@@ -70,13 +85,15 @@ int main()
 	double num2 = 0.0;
 
 	cout << "Введите num1: ";
-	/*cin >> num1;
-	cout << endl << "Введите num2: ";
-	cin >> num2;*/
-
+	cin >> num1;
 	calculator.set_num1(num1);
+	cout << "Введите num2: ";
+	cin >> num2;
+	calculator.set_num2(num2);
+	cout << endl;
 
-	cout << num1 << endl;
+	calculator.Screen_output(num1, num2);
+
 
 	return 0;
 }
