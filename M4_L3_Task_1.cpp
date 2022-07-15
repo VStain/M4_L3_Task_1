@@ -46,7 +46,7 @@ public:
 		{
 			return false;
 		}
-		num1 = this->num1;
+		this->num1 = num1;
 		return true;
 	}
 	bool set_num2(double num2)
@@ -55,25 +55,26 @@ public:
 		{
 			return false;
 		}
-		num2 = this->num2;
+		this->num2 = num2;
 		return true;
 	}
-	void Screen_output(double num1, double num2)
-	{
-		Calculator screen;
-		cout << "num1 + num2 = " << screen.add(num1, num2) << endl;
-		cout << "num1 - num2 = " << screen.subtract_1_2(num1, num2) << endl;
-		cout << "num2 - num1 = " << screen.subtract_2_1(num2, num1) << endl;
-		cout << "num1 * num2 = " << screen.multiply(num1, num2) << endl;
-		cout << "num1 / num2 = " << screen.divide_1_2(num1, num2) << endl;
-		cout << "num2 / num1 = " << screen.divide_2_1(num2, num1) << endl;
-	}
+
 
 private:
 	double num1 = 0.0;
 	double num2 = 0.0;
 };
 
+void Screen_output(double num1, double num2)
+{
+	Calculator screen;
+	cout << endl << "num1 + num2 = " << screen.add(num1, num2) << endl;
+	cout << "num1 - num2 = " << screen.subtract_1_2(num1, num2) << endl;
+	cout << "num2 - num1 = " << screen.subtract_2_1(num2, num1) << endl;
+	cout << "num1 * num2 = " << screen.multiply(num1, num2) << endl;
+	cout << "num1 / num2 = " << screen.divide_1_2(num1, num2) << endl;
+	cout << "num2 / num1 = " << screen.divide_2_1(num2, num1) << endl;
+}
 
 
 int main()
@@ -84,15 +85,55 @@ int main()
 	double num1 = 0.0;
 	double num2 = 0.0;
 
-	cout << "Введите num1: ";
-	cin >> num1;
-	calculator.set_num1(num1);
-	cout << "Введите num2: ";
-	cin >> num2;
-	calculator.set_num2(num2);
-	cout << endl;
 
-	calculator.Screen_output(num1, num2);
+	do
+	{
+		cout << endl << "Введите num1: ";
+		cin >> num1;
+		calculator.set_num1(num1);
+		if (num1 < 0 || num1 == 0)
+		{
+			cout << "Неправильный номер! Повторите ввод." << endl;
+			continue;
+		}
+	} while (num1 == 0);
+
+	do
+	{
+		cout << "Введите num2: ";
+		cin >> num2;
+		calculator.set_num1(num2);
+		if (num2 < 0 || num2 == 0)
+		{
+			cout << "Неправильный номер! Повторите ввод." << endl;
+			continue;
+		}
+	} while ( num2 == 0);
+
+	/*do
+	{
+		cout << endl << "Введите num1: ";
+		cin >> num1;
+		calculator.set_num1(num1);
+		if (num1 < 0 || num1 == 0)
+		{
+			cout << "Неправильный номер! Повторите ввод." << endl;
+			//continue;
+		}
+
+		cout << endl << "Введите num2: ";
+		cin >> num2;
+		calculator.set_num1(num2);
+		if (num2 < 0 || num2 == 0)
+		{
+			cout << "Неправильный номер! Повторите ввод." << endl;
+			//continue;
+		}
+		
+	} while (num1 || num2 != 0);*/
+		
+
+	Screen_output(num1, num2);
 
 
 	return 0;
