@@ -77,6 +77,7 @@ void Screen_output(double num1, double num2)
 }
 
 
+
 int main()
 {
 	setlocale(LC_ALL, "Ru");
@@ -85,53 +86,26 @@ int main()
 	double num1 = 0.0;
 	double num2 = 0.0;
 
-
-	do
+	cout << "Введите num1: ";
+	cin >> num1;
+	while (!calculator.set_num1(num1))
 	{
-		cout << endl << "Введите num1: ";
+		cout << "Неправильный номер! Повторите ввод." << "!\n";
+		cout << "Введите num1: ";
 		cin >> num1;
-		calculator.set_num1(num1);
-		if (num1 < 0 || num1 == 0)
-		{
-			cout << "Неправильный номер! Повторите ввод." << endl;
-			continue;
-		}
-	} while (num1 == 0);
+	}
 
 	do
 	{
 		cout << "Введите num2: ";
 		cin >> num2;
 		calculator.set_num1(num2);
-		if (num2 < 0 || num2 == 0)
+		if (num2 == 0)
 		{
 			cout << "Неправильный номер! Повторите ввод." << endl;
 			continue;
 		}
-	} while ( num2 == 0);
-
-	/*do
-	{
-		cout << endl << "Введите num1: ";
-		cin >> num1;
-		calculator.set_num1(num1);
-		if (num1 < 0 || num1 == 0)
-		{
-			cout << "Неправильный номер! Повторите ввод." << endl;
-			//continue;
-		}
-
-		cout << endl << "Введите num2: ";
-		cin >> num2;
-		calculator.set_num1(num2);
-		if (num2 < 0 || num2 == 0)
-		{
-			cout << "Неправильный номер! Повторите ввод." << endl;
-			//continue;
-		}
-		
-	} while (num1 || num2 != 0);*/
-		
+	} while (!calculator.set_num1(num2));
 
 	Screen_output(num1, num2);
 
